@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int choice()
+{
+		char quest = '0';
+		//while ((c = getchar()) != '\n')
+		for( ;; ) 
+		{
+			int c = getchar();
+			printf("\nc = {%c} (%d)\n", c, c);
+
+			if (c == '\n') 
+			{
+				printf("break\n");
+				break;
+			}
+			else
+			{
+				quest = c;
+				printf("quest = c, %c {%d} = %c {%d}\n", quest, quest, c, c); // PRINTF FOR EVERYTHING!!!!!!!!!!!!!!!! // =^_^= - A kitten for Ded ))
+			}
+		}
+
+		printf("\nquest = {%c} (%d) (after the loop)\n", quest, quest);
+
+		if (quest == 'Y' || quest == 'y')
+		{
+			printf("\n\t\t\t<<<<We've finished to test our function, thank you>>>>\n\n");
+			return 0;
+		}
+
+		if (quest == 'N' || quest == 'n')
+		{
+			printf("Ok,Goodbye,my friend!!!\n\n");
+			return 0;
+		}
+
+		printf("Sorry, I'm a stupid robot and I don't understand this command :(\n"
+			   "Try again!\n\n");
+		choice();
+}
+
+int main()
+{
+	int value = choice();
+	
+	printf("Choice returned %d\n", value);
+}
