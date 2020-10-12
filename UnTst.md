@@ -39,7 +39,7 @@ void Lineq_Test()
 	lin = linequation(0,4, &x);
 	if (lin == NO_ROOTS)
 	{
-		printf("The first test is OK\n");
+		printf("The second test is OK\n");
 		n++;
 	}
 	else printf("\n\tIt's a pity! The second test failed\n"
@@ -49,7 +49,7 @@ void Lineq_Test()
   lin = linequation(0,0, &x);
 	if (lin == INF_ROOTS)
 	{
-		printf("The first test is OK\n");
+		printf("The third test is OK\n");
 		n++;
 	}
 	else printf("\n\tOoohps, the third test failed\n"
@@ -101,7 +101,7 @@ void Quadeq_Test()
 	quad = SolvQuad(1,2,10, &x1, &x2);
 	if (quad == NO_ROOTS)
 	{
-		printf("The second test is OK\n");
+		printf("The third test is OK\n");
 		n++;
 	}
 	else printf("\n\tThe third test failed\n"
