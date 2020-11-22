@@ -1,15 +1,20 @@
 #ifndef __UnTst_h__
 #define __UnTst_h__
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <math.h>
+
 #define NO_ROOTS  0
 #define ONE_ROOT  1
 #define TWO_ROOTS  2
 #define INF_ROOTS  3
 
-void Quadeq_Test();
+//void Quadeq_Test();
 int choice();
-void Lineq_Test();
-void UNIT_TESTS();
+//void Lineq_Test();
+//void UNIT_TESTS();
 int SolvQuad(double a, double b, double c, double* x1, double* x2);
 int linequation(double b, double c, double* x1);
 int is_zero(double* e);
