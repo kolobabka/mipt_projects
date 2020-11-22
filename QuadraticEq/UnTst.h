@@ -11,10 +11,7 @@
 #define TWO_ROOTS  2
 #define INF_ROOTS  3
 
-//void Quadeq_Test();
 int choice();
-//void Lineq_Test();
-//void UNIT_TESTS();
 int SolvQuad(double a, double b, double c, double* x1, double* x2);
 int linequation(double b, double c, double* x1);
 int is_zero(double* e);
@@ -30,7 +27,7 @@ void Lineq_Test()
 {
 	int n = 0;
 	double x = 0;
-	printf("\n\t\t\t<<<<Let's check the function 'linequation' solving linear equations (line 102)>>>>\n\n");
+	printf("\n\t\t\t<<<<Let's check the function 'linequation' solving linear equations (line 120)>>>>\n\n");
 
 	int lin = linequation(3,4, &x);
 	double expect = -4.0 / 3.0;
@@ -41,7 +38,7 @@ void Lineq_Test()
 	else printf("\tWell, something gets wrong and the first test failed\n"
 		    "An expected result is %lf (return %d);the function has returned the other value(return %d),"
 		    "or has some troubles with arithmetic (x = %lf).\n"
-		    "Please try to check the lines 107-110,"
+		    "Please try to check the lines 123-128,"
 		    "maybe we have mistackes in the code.\n\n", expect, ONE_ROOT, lin, x);
 
 	lin = linequation(0,4, &x);
@@ -52,7 +49,7 @@ void Lineq_Test()
 	}
 	else printf("\n\tIt's a pity! The second test failed\n"
 		    "The result must be 'No Roots!', but something gets wrong.\n"
-		    "Please try to check the lines 115-117, maybe we have mistackes in the code.\n\n");
+		    "Please try to check the lines 131-136, maybe we have mistackes in the code.\n\n");
 
   lin = linequation(0,0, &x);
 	if (lin == INF_ROOTS)
@@ -62,7 +59,7 @@ void Lineq_Test()
 	}
 	else printf("\n\tOoohps, the third test failed\n"
 		    "The result must be 'Infinity number of roots!', but something gets wrong.\n"
-		    "Please try to check the lines 120-122, maybe we have mistackes in the code.\n\n");
+		    "Please try to check the lines 138-142, maybe we have mistackes in the code.\n\n");
 
 	if (n == 3) printf("\nCongratulations! All tests are done!\n");
 
@@ -74,7 +71,7 @@ void Quadeq_Test()
 {
 	int n = 0;
 	double x1 = 0, x2 = 0;
-	printf("\n\t\t\t<<<<Checking the function 'SolvQuad' solving quadratic equations (line 62)>>>>\n\n");
+	printf("\n\t\t\t<<<<Checking the function 'SolvQuad' solving quadratic equations (line 82)>>>>\n\n");
 
 	int quad = SolvQuad(1,2,1, &x1, &x2);
 	double expect = -1.0;
@@ -87,7 +84,7 @@ void Quadeq_Test()
 	else printf("\n\tThe first test failed\n"
 		    "An expected result is %lf (return %d);the function has returned the other value(return %d),"
 		    "or has troubles with arithmetic (x = %lf).\n"
-		    "Please try to check the lines 73-76,"
+		    "Please try to check the lines 90-96,"
 		    "maybe we have mistackes in the code.\n\n", expect, ONE_ROOT, quad, x1);
 
 	quad = SolvQuad(1,3,-4, &x1, &x2);
@@ -103,18 +100,18 @@ void Quadeq_Test()
 	else printf("\n\tPanic! The second test failed\n"
 		    "An expected result is %lf and %lf (return %d);the function has returned the other value(return %d),"
 		    "or has troubles with arithmetic (x1 = %lf and x2 = %lf).\n"
-		    "Please try to check the lines 82-89,"
+		    "Please try to check the lines 99-108,"
 		    "maybe we have mistackes in the code.\n\n", expect1, expect2, TWO_ROOTS, quad, x1, x2);
 
 	quad = SolvQuad(1,2,10, &x1, &x2);
 	if (quad == NO_ROOTS)
 	{
-		printf("The second test is OK\n");
+		printf("The third test is OK\n");
 		n++;
 	}
 	else printf("\n\tThe third test failed\n"
 		    "The result must be 'No Roots!', but something gets wrong.\n"
-		    "Please try to check the lines 92-95, maybe we have mistackes in the code.\n\n");
+		    "Please try to check the lines 112-114, maybe we have mistackes in the code.\n\n");
 
 	if (n == 3) printf("\nWow-wow! All tests are done!\n");
 
