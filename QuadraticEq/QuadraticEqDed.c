@@ -8,12 +8,62 @@
 
 //..........................................................
 
+//==========================================================
+//!
+//! @note this function gives a user a choice to start Unit_Tests or not
+//!
+//! @return return 1 if it works corretly and -1 if not.
+//!
+//==========================================================
+
 int choice();
+
+//=========================================================
+//! @note this function solves an equation if the first coefficient is not zero
+//!
+//! @param [in] a - the first coefficient
+//! @param [in] b - the second coefficient
+//! @param [in] c - the third coefficient
+//! @param [in] x1 - the pointer to the first potential root
+//! @param [in] x2 - the pointer to the second potential root
+//! @param [out] x1 - the value of first root (if it exists)
+//! @param [out] x2 - the value of second root (if it exists)
+//! @return Macros: ONE_ROOT = 1 if the equation has one root, TWO_ROOTS = 2 if the equation has two roots and NO_ROOTS = 0 if the equation has no roots
+//!
+//=========================================================
+
 int SolvQuad(double a, double b, double c, double* x1, double* x2);
+
+//=========================================================
+//!
+//! @note this function solves an equation if the first coefficient is  zero
+//!
+//! @param [in] b - the second coefficient
+//! @param [in] c - the third coefficient
+//! @param [in] x1 - the pointer to the potential root
+//! @param [out] x1 - the value of root of equation (if it exists)
+//!
+//! @return Macros: ONE_ROOT = 1 if the equation has one root, NO_ROOTS = 0 if the equation has no roots and INF_ROOTS = 3 if the equation has an infinity number of roots
+//!
+//=========================================================
+
 int linequation(double b, double c, double* x1);
+
+//=========================================================
+//!
+//! @note this function makes an a root zero if its value is too small (if x less than 10^-6)
+//!
+//! @param [in] = the pointer to root
+//!
+//! @return the same value of root if it's more than 10^-6 and 0 if it's less
+//=========================================================
+
 int is_zero(double* e);
 
-//..........................................................
+//=========================================================
+//! @note The main function
+//! @return 0
+//=========================================================
 
 int main()
 {
@@ -66,7 +116,6 @@ int main()
 				"The first root is x1 = %lf\n"
 				"The second root is x2 = %lf\n", x1, x2);             break;
 
-			case INF_ROOTS: printf("Infinite number of roots!\n");  break;
 		}
 	}
 
@@ -176,6 +225,7 @@ int choice()
 	printf("Sorry, I'm a stupid robot and I don't understand this command :(\n"
 					"Try again!\n\n");
 	choice();
+
 }
 
 //..........................................................
