@@ -7,10 +7,11 @@
 
 //-----------------------------------------------------------------------------
 
+void file_write_func (char** strings, size_t num_str, char* const output);
 int char_cmp_up (const void *first, const void *second );
 int char_cmp_low (const void *first, const void *second );
 void str_sep (char* buffer, size_t size, char** strings, size_t num_str);
-int count_strings (char* get_text, size_t size);
+int count_strings (char* buffer, size_t size);
 void file_read_func (char* buffer, size_t size, char* const text_name);
 int size_of_text (char* const text_name);
 
@@ -22,6 +23,8 @@ int main()
   char* buffer = NULL;
   size_t size = 0, num_str = 0;
   char* const text_name = "text.md";
+  char* const output = "output.md";
+  char* const output_iverse = "output_iverse.md";
 
   size = size_of_text(text_name);
   assert (size);
@@ -40,19 +43,14 @@ int main()
 
   qsort (strings, num_str, sizeof (char*), char_cmp_low);
 
-  for (int prnt_count = 0; prnt_count < num_str; prnt_count++)
-    printf("%s\n", strings[prnt_count]);
+  file_write_func (strings, num_str, output);
 
-  printf("\n");
   qsort (strings, num_str, sizeof (char*), char_cmp_up);
 
-  printf("\n\n\nINVEEEEEEEEEEEEEEERSE\n\n\n" );
+  file_write_func (strings, num_str, output_iverse);
 
-  for (int prnt_count = 0; prnt_count < num_str; prnt_count++)
-    printf("%s\n", strings[prnt_count]);
-
-  free(buffer);
-  free(strings);
+  free (buffer);
+  free (strings);
 
   return 0;
 }
@@ -196,7 +194,7 @@ int char_cmp_up (const void *first, const void *second )
   size_t char_count_1 = strlen (str1[0]) - 1;
   size_t char_count_2 = strlen (str2[0]) - 1;
 
-  while (char_count_1 >= 0 && char_count_2 >= 0)
+  while (char_count_1 > 0 && char_count_2 > 0)
   {
     while (ispunct (str1[0][char_count_1]) || isdigit (str1[0][char_count_1]) || isspace (str1[0][char_count_1]))
       char_count_1--;
@@ -213,4 +211,22 @@ int char_cmp_up (const void *first, const void *second )
   }
 
   return (tolower(str1[0][char_count_1]) - tolower(str2[0][char_count_2]));
+}
+
+void file_write_func (char** strings, size_t num_str, char* const output)
+{
+  assert (strings);
+  assert (output);
+  assert (num_str);
+
+  FILE* text = fopen(output, "w");
+  assert(text);
+
+  for (int count_str = 0; count_str < num_str; count_str++)
+  {
+    fwrite (strings[count_str], sizeof (char), strlen (strings[count_str]), text);
+    fwrite ("\n", sizeof (char), 1, text);
+  }
+
+  fclose(text);
 }
