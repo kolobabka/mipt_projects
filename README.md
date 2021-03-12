@@ -1,2 +1,4 @@
-# mipt_projects
-my first rep in mipt
+MIPT
+===
+
+Here I try to make my first stack
