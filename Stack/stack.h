@@ -2,8 +2,10 @@
 //..............................................................................
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <assert.h>
 //..............................................................................
+#define POISON NAN
 //..............................................................................
 enum TypeError { // TypeError::NO_ERROR
 
@@ -17,25 +19,32 @@ enum TypeError { // TypeError::NO_ERROR
 
 };
 //..............................................................................
-typedef int TYPE; // data_t
+typedef double TYPE; // data_t
 //..............................................................................
-const size_t START_CAP = 20;
-const TYPE POISON = 0xBADDEAD;
+const size_t START_CAP = 4;
+//const TYPE POISON = nan; //0xBADDEAD;
+const unsigned long long CANARY = 0xBEDDEADBEDDEAD;
+
 //..............................................................................
 struct stack {
-  TYPE* buf;
+  unsigned long long stk_left_canary;
+  void* buf;
   int sz;
   size_t capacity;
+  unsigned long long HashSum;
+  unsigned long long stk_right_canary;
 };
 //..............................................................................
 size_t ReCalloc (stack* stk);
-size_t Stk_Dump (const stack* stk);
+size_t Stk_Dump (stack* stk);
 stack* Stk_Construct ();
 size_t Stk_Push (stack* stk, TYPE elem);
 size_t Stk_Pop (stack* stk);
 void Stk_Destruct (stack* stk);
 size_t Stk_OK (size_t error, size_t line, const char* func);
-size_t Check_Stk (const stack* stk);
+size_t Check_Stk (stack* stk);
+unsigned long long ROR (unsigned long long elem);
+unsigned long long Hash (stack* stk);
 //..............................................................................
 
 #define STK_OK if(Stk_OK(error,__LINE__,__FUNCTION__)) return 0

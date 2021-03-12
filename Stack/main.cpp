@@ -1,4 +1,4 @@
-include "stack.h"
+#include "stack.h"
 //..............................................................................
 //..............................................................................
 int main ()
@@ -7,15 +7,19 @@ int main ()
   size_t error = 0;
 
   stk = Stk_Construct ();
+
   assert (stk && "Lack of memory!!! Attention!");
 
-  for (TYPE i = 0; i < 1488; i++)
+  double* test = (double*) stk->buf;
+  *test = 100.666758;
+
+  for (TYPE i = 0; i < 100; i++)
   {
     error = Stk_Push (stk, i);
     STK_OK;
   }
 
-  for (TYPE i = 0; i < 1400; i++)
+  for (TYPE i = 0; i < 60; i++)
   {
     error = Stk_Pop (stk);
     STK_OK;
