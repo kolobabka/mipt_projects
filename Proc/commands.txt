@@ -1,0 +1,5 @@
+PUSH 12
+PUSH 7
+   POP 8
+ADD
+SUB
