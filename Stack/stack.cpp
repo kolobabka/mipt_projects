@@ -29,10 +29,13 @@ stack* Stk_Construct ()
 //..............................................................................
 size_t Stk_Dump (stack* stk)
 {
-  size_t check = 0;
+  size_t error = 0;
   size_t print_count = 0;
-  if (check = Check_Stk (stk))
-    return check;
+  if (error = Check_Stk (stk))
+  {
+    STK_OK;
+    return error;
+  }
 
   printf ("Stack [%p]\n", stk);
   printf ("\t{\n");
@@ -113,6 +116,7 @@ void Stk_Destruct (stack* stk)
 //..............................................................................
 size_t ReCalloc (stack* stk)
 {
+  printf("jepa\n");
   size_t old_cap = stk->capacity;
   void* tmp_buf = nullptr;
 
@@ -121,12 +125,15 @@ size_t ReCalloc (stack* stk)
     stk->capacity *= 2;
 
     tmp_buf = (void*) realloc ((unsigned long*)(stk->buf) - 1, stk->capacity * sizeof(TYPE) + 2 * sizeof (CANARY));
-    assert (stk);
+    assert (tmp_buf);
     stk->buf = (unsigned long*)(tmp_buf) + 1;
     ((unsigned long long*) stk->buf)[stk->capacity*sizeof(TYPE)/sizeof(CANARY)] = CANARY;
 
     for (old_cap; old_cap < stk->capacity; old_cap++)
+    {
       ((TYPE*) stk->buf)[old_cap] = POISON;
+        printf("pisya\n");
+    }
   }
   else
   {
@@ -180,7 +187,7 @@ size_t Check_Stk (stack* stk)
 {
   if (!stk)
     return NULL_STACK;
-    
+
   if (!(stk->buf))
     return NULL_BUFFER;
 
