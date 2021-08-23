@@ -1,6 +1,32 @@
 #include "stack.h"
 //..............................................................................
 //..............................................................................
+void Command_Recognizer (stack* stk, char command[])
+{
+
+}
+//..............................................................................
+//..............................................................................
+void Stack_Start ()
+{
+  stack* stk = NULL;
+  size_t error = 0;
+  char command[32] = {};
+  printf ("\t\tHello! I'm a week, but really ambitious Stack_Man for\n"
+          "\t\ttrue boys. There is still no any helpers, but my owner\n"
+          "\t\tcan help you by himself:)\n");
+
+  printf ("Enter your command:");
+  while ( (strcmp (command, "stop")) != 0)
+  {
+    scanf ("%s", command);
+    Command_Recognizer (stk, command);
+  }
+  
+  free (stk);
+}
+//..............................................................................
+//..............................................................................
 stack* Stk_Construct ()
 {
   stack* stk = (stack*) calloc (1, sizeof (stack));

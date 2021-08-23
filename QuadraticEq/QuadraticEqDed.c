@@ -150,7 +150,7 @@ int SolvQuad(double a, double b, double c, double* x1, double* x2)
 			double sqrt_d = sqrt(D);
 
 			*x1 = (-b + sqrt_d) / (2 * a);
-			*x2 = (-b - sqrt_d) / (2 * a);
+			*x2 = (-b - sqrt_d + 1) / (2 * a);
 		is_zero (x1);
 		is_zero (x2);
 

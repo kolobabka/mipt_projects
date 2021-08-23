@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <assert.h>
+#include <string.h>
 //..............................................................................
 #define POISON NAN
 //..............................................................................
@@ -35,6 +36,7 @@ struct stack {
   unsigned long long stk_right_canary;
 };
 //..............................................................................
+void Stack_Start ();
 size_t ReCalloc (stack* stk);
 size_t Stk_Dump (stack* stk);
 stack* Stk_Construct ();

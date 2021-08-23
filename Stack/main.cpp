@@ -3,23 +3,33 @@
 //..............................................................................
 int main ()
 {
-  stack* stk = NULL;
-  size_t error = 0;
+  // stack* stk = NULL;
+  // size_t error = 0;
 
-  stk = Stk_Construct ();
+  // stk = Stk_Construct ();
 
-  assert (stk && "Lack of memory!!! Attention!");
+  // assert (stk && "Lack of memory!!! Attention!");
 
-  stk = Stk_Construct();
-  ((TYPE*)(stk->buf))[31] = 4;
+  
 
-  STK_OK;
+  // stk = Stk_Construct();
+  // ((TYPE*)(stk->buf))[31] = 4;
 
-  Stk_Destruct (stk);
+  // for (int i = 0; i < 100; i++)
+  //   Stk_Push (stk, i);
 
-  printf("\t\t\t***VSE OK***\n");
-  free (stk);
+  // Stk_Dump (stk);
+
+  // STK_OK;
+
+  // Stk_Destruct (stk);
+
+  // printf("\t\t\t***VSE OK***\n");
+  // free (stk);
+
+  Stack_Start ();
   return 0;
 }
 //..............................................................................
 //..............................................................................
+
