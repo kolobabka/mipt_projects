@@ -144,7 +144,7 @@ size_t ReCalloc (stack* stk)
 {
   printf("jepa\n");
   size_t old_cap = stk->capacity;
-  void* tmp_buf = nullptr;
+  void* tmp_buf = NULL;
 
   if (stk->sz * 2 > stk->capacity)
   {

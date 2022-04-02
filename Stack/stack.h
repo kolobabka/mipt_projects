@@ -22,19 +22,19 @@ enum TypeError { // TypeError::NO_ERROR
 //..............................................................................
 typedef double TYPE; // data_t
 //..............................................................................
-const size_t START_CAP = 4;
+static const size_t START_CAP = 4;
 //const TYPE POISON = nan; //0xBADDEAD;
-const unsigned long long CANARY = 0xBEDDEADBEDDEAD;
+static const unsigned long long CANARY = 0xBEDDEADBEDDEAD;
 
 //..............................................................................
-struct stack {
+typedef struct stack {
   unsigned long long stk_left_canary;
   void* buf;
   int sz;
   size_t capacity;
   unsigned long long HashSum;
   unsigned long long stk_right_canary;
-};
+}stack;
 //..............................................................................
 void Stack_Start ();
 size_t ReCalloc (stack* stk);
